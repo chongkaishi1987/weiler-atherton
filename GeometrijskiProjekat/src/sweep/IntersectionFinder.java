@@ -35,6 +35,7 @@ public class IntersectionFinder {
 	}
 
 	private void processEvent(SweepEvent e) {
+		//System.out.println(status);
 		sweepY = e.getEventY();
 		switch (e.type) {
 		case DELETE:

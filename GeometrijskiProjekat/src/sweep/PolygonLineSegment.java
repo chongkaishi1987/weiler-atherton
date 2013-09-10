@@ -63,7 +63,7 @@ public class PolygonLineSegment implements Comparable<PolygonLineSegment> {
 	private int comp(PolygonLineSegment o) {
 		//doublecheck n
 		double x=start.x,ox=o.start.x;
-		/*double y=IntersectionFinder.getInstance().getSweepY();
+		double y=IntersectionFinder.getInstance().getSweepY();
 		if (getA()!=0)
 		{
 			x=(getC()-getB()*y)/getA();
@@ -71,7 +71,7 @@ public class PolygonLineSegment implements Comparable<PolygonLineSegment> {
 		if (o.getA()!=0)
 		{
 			ox=(o.getC()-o.getB()*y)/o.getA();
-		}*/
+		}
 		if (!MathUtils.Equal(x,ox))
 			return Double.valueOf(x).compareTo(ox);
 		if (MathUtils.Equal(getA(), 0))
@@ -80,7 +80,8 @@ public class PolygonLineSegment implements Comparable<PolygonLineSegment> {
 			return 1;
 		}
 		if (MathUtils.Equal(o.getA(), 0)) return -1;
-		return Double.valueOf(getB()/getA()).compareTo(o.getB()/o.getA());
+		if (MathUtils.Equal(start.x, o.start.x)) return Double.valueOf(getB()/getA()).compareTo(o.getB()/o.getA());
+		else return -Double.valueOf(getB()/getA()).compareTo(o.getB()/o.getA());
 		}
 
 	@Override
