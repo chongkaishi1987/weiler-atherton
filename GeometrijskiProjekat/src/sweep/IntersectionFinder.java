@@ -144,6 +144,7 @@ public class IntersectionFinder {
 		status.clear();
 		queue.clear();
 		intersections.clear();
+		sweepY=Double.MAX_VALUE;
 		addEvents(subject, clip);
 		while (!queue.isEmpty()) {
 			processEvent(queue.pollLast());
