@@ -140,7 +140,7 @@ public class IntersectionFinder {
 				e.intersectSegment.end));
 	}
 
-	public void findIntersections(PolygonNode subject, PolygonNode clip) {
+	public void findIntersections(PolygonNode subject, PolygonNode clip, boolean sInC) {
 		status.clear();
 		queue.clear();
 		intersections.clear();
@@ -150,9 +150,8 @@ public class IntersectionFinder {
 			processEvent(queue.pollLast());
 		}
 		
-		//finds out whether you want to check if you reversed entering/exiting status
-		//HINT: YOU DO
-	    PolygonNodeType nextNodeMark = PolygonNodeType.ENTERING;
+		
+	    PolygonNodeType nextNodeMark = sInC?PolygonNodeType.EXITING:PolygonNodeType.ENTERING;
 	    
 	    PolygonNode iterator = subject;
 	    while (!(iterator.nextSubject == subject))

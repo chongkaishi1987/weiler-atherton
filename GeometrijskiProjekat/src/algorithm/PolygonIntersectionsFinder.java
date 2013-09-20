@@ -16,12 +16,19 @@ public class PolygonIntersectionsFinder {
 		if (instance==null) instance = new PolygonIntersectionsFinder();
 		return instance;
 	}
-	public ArrayList<ArrayList<Point2D>> getPolygonIntersections(PolygonNode subject,PolygonNode clip)
+	public ArrayList<ArrayList<Point2D>> getPolygonIntersections(PolygonNode subject,PolygonNode clip, boolean sInC, boolean cInS)
 	{
 		ArrayList<ArrayList<Point2D>> toReturn = new ArrayList<ArrayList<Point2D>>();
 		enteringNodes.clear();
 		subject.addNodesToIntersectionsEntering(enteringNodes);
 		clip.addNodesToIntersectionsEntering(enteringNodes);
+		if (enteringNodes.isEmpty())
+		{
+			ArrayList <Point2D> inter = new ArrayList<Point2D>();
+			if (sInC) subject.addPointsToSubjects(inter);
+			else if (cInS) clip.addPointsToClips(inter);
+			toReturn.add(inter);
+		}
 		while (!enteringNodes.isEmpty())
 		{
 			toReturn.add(getPolygonIntersection(enteringNodes.first()));

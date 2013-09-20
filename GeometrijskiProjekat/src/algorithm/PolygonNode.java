@@ -2,6 +2,7 @@ package algorithm;
 
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Set;
 
 import sweep.PolygonLineSegment;
@@ -73,13 +74,13 @@ public class PolygonNode implements Comparable<PolygonNode>{
     	if (seed.type == PolygonNodeType.CLIP) if (nextClip!=seed) nextClip.printNodes(seed);
     	if (seed.type == PolygonNodeType.SUBJECT) if (nextSubject!=seed) nextSubject.printNodes(seed);
     }
-    private void addPointsToSubjects(PolygonNode seed, Set<Point2D> subjects)
+    private void addPointsToSubjects(PolygonNode seed, Collection<Point2D> subjects)
     {
     	if (type == PolygonNodeType.SUBJECT) subjects.add(new Point2D.Double(x,y));
     	if (seed.type == PolygonNodeType.CLIP) if (nextClip!=seed) nextClip.addPointsToSubjects(seed, subjects);
     	if (seed.type == PolygonNodeType.SUBJECT) if (nextSubject!=seed) nextSubject.addPointsToSubjects(seed,subjects);
     }
-    public void addPointsToSubjects(Set<Point2D> subjects)
+    public void addPointsToSubjects(Collection<Point2D> subjects)
     {
     	addPointsToSubjects(this, subjects);
     }
@@ -106,13 +107,13 @@ public class PolygonNode implements Comparable<PolygonNode>{
     	addPointsToIntersectionsExiting(this, intersectionsExiting);
     }
     
-    private void addPointsToClips(PolygonNode seed, Set<Point2D> clips)
+    private void addPointsToClips(PolygonNode seed, Collection<Point2D> clips)
     {
     	if (type == PolygonNodeType.CLIP) clips.add(new Point2D.Double(x,y));
     	if (seed.type == PolygonNodeType.CLIP) if (nextClip!=seed) nextClip.addPointsToClips(seed, clips);
     	if (seed.type == PolygonNodeType.SUBJECT) if (nextSubject!=seed) nextSubject.addPointsToClips(seed,clips);
     }
-    public void addPointsToClips(Set<Point2D> clips)
+    public void addPointsToClips(Collection<Point2D> clips)
     {
     	addPointsToClips(this, clips);
     }
