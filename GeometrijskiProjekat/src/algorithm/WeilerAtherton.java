@@ -22,8 +22,10 @@ public class WeilerAtherton {
 	{
 		pointsCheck = new TreeSet<Point2D>(new PointCheckComparator());
 	}
-	public AlgorithmOutput doAlgorithms(ArrayList<Point2D> s, ArrayList<Point2D> c)
+	public AlgorithmOutput doAlgorithms(ArrayList<Point2D> s, ArrayList<Point2D> c, boolean sInC, boolean cInS)
 	{
+		
+		System.out.println(sInC+ "  c in s: " +cInS);
 		pointsCheck.clear();
 		checkAndCorrectPoints(s);
 		checkAndCorrectPoints(c);

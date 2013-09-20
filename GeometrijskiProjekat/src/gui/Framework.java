@@ -195,7 +195,14 @@ public class Framework extends JPanel implements MouseListener, MouseMotionListe
 		if(_poly1 == null || _poly2 == null) return;
 		
 		if(_output == null){
-			_output = WeilerAtherton.getInstance().doAlgorithms(_poly2.getPointsClockwise(), _poly1.getPointsClockwise());
+			
+			ArrayList<Point2D> sPoly = _poly2.getPointsClockwise(), cPoly = _poly1.getPointsClockwise();
+			_output = WeilerAtherton.getInstance().doAlgorithms(
+					sPoly, 
+					cPoly,
+					_poly1.asPath().contains(sPoly.get(0)),
+					_poly2.asPath().contains(cPoly.get(0))
+					);
 			
 			_intersectionsIn = _output.getIntersectionsEntering();
 			_intersectionsOut = _output.getIntersectionsExiting();

@@ -40,8 +40,8 @@ public class Test {
 		c.add(new Point2D.Double(-0.5,0.5));
 		c.add(new Point2D.Double(0.5,0.5));
 		c.add(new Point2D.Double(0.5,-0.5));
-		AlgorithmOutput output = WeilerAtherton.getInstance().doAlgorithms(c, s);
-		System.out.println(output);
+		//AlgorithmOutput output = WeilerAtherton.getInstance().doAlgorithms(c, s);
+		//System.out.println(output);
 	}
 
 }
