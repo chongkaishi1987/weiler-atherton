@@ -47,7 +47,7 @@ public class WeilerAtherton {
 		{
 			while (pointsCheck.contains(point))
 			{
-				point.setLocation(point.getX()+(Math.random()-0.5) * 2e-5, point.getY()+(Math.random()-0.5) * 2e-5);
+				point.setLocation(point.getX()+(Math.random()-0.5) * 2e-3, point.getY()+(Math.random()-0.5) * 2e-3);
 			}
 			pointsCheck.add(point);
 		}
