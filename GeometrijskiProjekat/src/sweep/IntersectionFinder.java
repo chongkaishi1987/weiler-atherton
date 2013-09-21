@@ -82,7 +82,7 @@ public class IntersectionFinder {
 			removeEvent(new SweepEvent(left, segment));
 		if (right != null)
 			removeEvent(new SweepEvent(segment, right));
-		if (status.remove(segment)!=true) System.out.println("stakurac\n"+status);
+		status.remove(segment);
 		if (left != null && right != null)
 			addEvent(new SweepEvent(left, right));
 		removeEvent(new SweepEvent(segment, false));
