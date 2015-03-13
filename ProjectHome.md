@@ -1,0 +1,1 @@
+Demonstration of the Weiler-Atherton algorithm
